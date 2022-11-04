@@ -1,242 +1,203 @@
 <div class="search">
   <form #form="ngForm" (submit)="onSubmit()">
-    <input type="text" placeholder="Search city" name="city" [(ngModel)]="cityName">
+    <input
+      type="text"
+      placeholder="Search city"
+      name="city"
+      [(ngModel)]="cityName"
+    />
   </form>
-
 </div>
-
-
 
 <!--      API INIZIALI SOLO 15 A MESE :/  \-->
 <div class="container" *ngIf="weatherData">
   <div class="upper-data">
     <!-- <img src="../assets/img/hotimg.jpg" alt="" *ngIf="14 <= 15"> -->
-    <img src="../assets/img/Scene-12.jpg" alt="" *ngIf="weatherData.main.temp < 15">
-    <img src="../assets/img/hotimg.jpg" alt="" *ngIf="weatherData.main.temp > 15">
+    <img
+      src="assets/img/Scene-12.jpg"
+      alt=""
+      *ngIf="weatherData.main.temp < 15"
+    />
+    <img
+      src="assets/img/hotimg.jpg"
+      alt=""
+      *ngIf="weatherData.main.temp > 15"
+    />
 
     <div class="weather-data">
-      <div class="location">{{weatherData.name}}</div>
-      <div class="temperature">{{weatherData.main.temp | number: '1.0-0'}} °C</div>
+      <div class="location">{{ weatherData.name }}</div>
+      <div class="temperature">
+        {{ weatherData.main.temp | number: "1.0-0" }} °C
+      </div>
     </div>
-
-
-
   </div>
   <div class="lower-data">
     <div class="more-info-label">More Information</div>
 
     <div class="more-info-container">
-
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/hot.png">
+          <img src="assets/img/hot.png" />
           <span>max</span>
         </div>
         <div class="info-block-value">
-          {{weatherData.main.temp_max | number: '1.0-0'}}°C
+          {{ weatherData.main.temp_max | number: "1.0-0" }}°C
         </div>
       </div>
 
-
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/cold.png">
+          <img src="assets/img/cold.png" />
           <span>min</span>
         </div>
         <div class="info-block-value">
-          {{weatherData.main.temp_min | number: '1.0-0'}}°C
+          {{ weatherData.main.temp_min | number: "1.0-0" }}°C
         </div>
       </div>
 
-
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/humidity.png">
+          <img src="assets/img/humidity.png" />
           <span>humidity</span>
         </div>
-        <div class="info-block-value">
-          {{weatherData.main.humidity}}%
-        </div>
+        <div class="info-block-value">{{ weatherData.main.humidity }}%</div>
       </div>
-
 
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/wind.png">
+          <img src="assets/img/wind.png" />
           <span>wind</span>
         </div>
-        <div class="info-block-value">
-          {{weatherData.wind.speed}} km/h
-        </div>
+        <div class="info-block-value">{{ weatherData.wind.speed }} km/h</div>
       </div>
-
-
     </div>
-
   </div>
 </div>
 
-
-
-
-
-
 <!--      SENZA API       ///////////////////////////////////////////////////////////////////////////////-->
-
-
-
-
-
-
 
 <div class="container" *ngIf="!weatherData && !weatherData2">
   <div class="upper-data">
     <!-- <img src="../assets/img/hotimg.jpg" alt="" *ngIf="14 <= 15"> -->
-    <img src="../assets/img/Scene-12.jpg" alt="" *ngIf="14 < 15">
-    <img src="../assets/img/hotimg.jpg" alt="" *ngIf="14 > 15">
+    <img src="assets/img/Scene-12.jpg" alt="" *ngIf="14 < 15" />
+    <img src="assets/img/hotimg.jpg" alt="" *ngIf="14 > 15" />
 
     <div class="weather-data">
       <div class="location">No Data</div>
       <div class="temperature">-- °C</div>
     </div>
-
-
-
   </div>
   <div class="lower-data">
     <div class="more-info-label"><b>More Information</b></div>
 
     <div class="more-info-container">
-
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/hot.png">
+          <img src="assets/img/hot.png" />
           <span>max</span>
         </div>
-        <div class="info-block-value">
-          -- °C
-        </div>
+        <div class="info-block-value">-- °C</div>
       </div>
-
 
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/cold.png">
+          <img src="assets/img/cold.png" />
           <span>min</span>
         </div>
-        <div class="info-block-value">
-          -- °C
-        </div>
+        <div class="info-block-value">-- °C</div>
       </div>
-
 
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/humidity.png">
+          <img src="assets/img/humidity.png" />
           <span>humidity</span>
         </div>
-        <div class="info-block-value">
-          -- %
-        </div>
+        <div class="info-block-value">-- %</div>
       </div>
-
 
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/wind.png">
+          <img src="assets/img/wind.png" />
           <span>wind</span>
         </div>
-        <div class="info-block-value">
-          -- km/h
-        </div>
+        <div class="info-block-value">-- km/h</div>
       </div>
-
-
     </div>
-
   </div>
 </div>
-
-
 
 <!--      API YAHOO       ///////////////////////////////////////////////////////////////////-->
 
 <div class="container" *ngIf="weatherData2">
   <div class="upper-data">
     <!-- <img src="../assets/img/hotimg.jpg" alt="" *ngIf="14 <= 15"> -->
-    <img src="../assets/img/Scene-12.jpg" alt="" *ngIf="this.weatherData2.forecasts[0].low < 15">
-    <img src="../assets/img/hotimg.jpg" alt="" *ngIf="this.weatherData2.forecasts[0].high > 15">
+    <img
+      src="assets/img/Scene-12.jpg"
+      alt=""
+      *ngIf="this.weatherData2.forecasts[0].low < 15"
+    />
+    <img
+      src="assets/img/hotimg.jpg"
+      alt=""
+      *ngIf="this.weatherData2.forecasts[0].high > 15"
+    />
 
     <div class="weather-data">
-      <div class="location">{{weatherData2.location.city}}</div>
-      <div class="temperature">{{weatherData2.current_observation.condition.temperature | number: '1.0-0'}} °C</div>
+      <div class="location">{{ weatherData2.location.city }}</div>
+      <div class="temperature">
+        {{
+          weatherData2.current_observation.condition.temperature
+            | number: "1.0-0"
+        }}
+        °C
+      </div>
     </div>
-
-
-
   </div>
   <div class="lower-data">
     <div class="more-info-label">More Information</div>
 
     <div class="more-info-container">
-
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/hot.png">
+          <img src="assets/img/hot.png" />
           <span>max</span>
         </div>
         <div class="info-block-value">
-          {{this.weatherData2.forecasts[0].high | number: '1.0-0'}}°C
+          {{ this.weatherData2.forecasts[0].high | number: "1.0-0" }}°C
         </div>
       </div>
 
-
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/cold.png">
+          <img src="assets/img/cold.png" />
           <span>min</span>
         </div>
         <div class="info-block-value">
-          {{this.weatherData2.forecasts[0].low | number: '1.0-0'}}°C
+          {{ this.weatherData2.forecasts[0].low | number: "1.0-0" }}°C
         </div>
       </div>
 
-
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/humidity.png">
+          <img src="assets/img/humidity.png" />
           <span>humidity</span>
         </div>
         <div class="info-block-value">
-          {{weatherData2.current_observation.atmosphere.humidity}}%
+          {{ weatherData2.current_observation.atmosphere.humidity }}%
         </div>
       </div>
-
 
       <div class="info-block">
         <div class="info-block-lable">
-          <img src="../assets/img/wind.png">
+          <img src="assets/img/wind.png" />
           <span>wind</span>
         </div>
         <div class="info-block-value">
-          {{weatherData2.current_observation.wind.speed}} km/h
+          {{ weatherData2.current_observation.wind.speed }} km/h
         </div>
       </div>
-
-
     </div>
-
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 <router-outlet></router-outlet>
